@@ -1,3 +1,5 @@
+# python_version=3.11
+
 numpy==2.0.2
 onnx
 onnxruntime
