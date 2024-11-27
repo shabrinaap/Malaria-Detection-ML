@@ -18,6 +18,7 @@ COPY . /app/
 # Install Python dependencies from requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+RUN pip3 install opencv-python-headless==4.5.3.56
 
 # Expose the port that the Flask app will run on
 EXPOSE 8080
