@@ -1,0 +1,198 @@
+/* General body styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffeeee, #f5d2d8); /* Gradient background */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+    box-sizing: border-box; /* Prevent padding/border from affecting layout */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin-right: 5;
+    width: 98%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    gap: 10px;
+}
+
+.logo {
+    height: 50px;
+}
+
+.logo2 {
+    height: 50px;
+}
+
+.logo3 {
+    height: 100px;
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #d81b60; /* Same as hover color */
+}
+
+/* Auth container styling */
+.auth-container {
+    max-width: 400px;
+    background-color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    text-align: center;
+    flex-direction: column; /* Align children in a column */
+    justify-content: center; /* Center the content vertically */
+    align-items: center; /* Center the content horizontally */
+    width: 100%; /* Ensure container takes full width of its parent */
+    box-sizing: border-box; /* Include padding and border in width calculation */
+}
+
+.auth-container h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #d81b60; /* Pinkish header color */
+}
+
+.auth-container label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+.auth-container input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.auth-container input[type="password"] {
+    font-size: 16px;
+}
+
+.auth-container small {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 10px;
+}
+
+/* Navbar styling */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.navbar img {
+    height: 40px;
+}
+
+.navbar .menu {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar .menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.navbar .menu a:hover {
+    color: #d81b60;
+}
+
+.navbar .profile img {
+    height: 30px;
+    border-radius: 50%;
+}
+
+/* Button styling */
+.auth-container button {
+    background-color: #d81b60; /* Pink button */
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.auth-container button:hover {
+    background-color: #a9133e; /* Darker pink on hover */
+}
+
+/* Link styling for sign in */
+.auth-container p {
+    margin-top: 15px;
+}
+
+.auth-container a {
+    color: #d81b60;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+/* Message styling */
+.messages {
+    margin-top: 20px;
+    color: red;
+    font-size: 14px;
+}
+
+.messages p {
+    margin: 0;
+}

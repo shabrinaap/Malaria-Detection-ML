@@ -1,0 +1,144 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffeeee, #f5d2d8);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    gap: 10px;
+}
+
+.logo {
+    height: 50px;
+}
+
+.logo2 {
+    height: 50px;
+}
+
+.logo3 {
+    height: 100px;
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #d81b60; /* Same as hover color */
+}
+
+/* Main content container styling */
+.container {
+    margin-top: 80px; /* Space for fixed navbar */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #d81b60;
+    margin-bottom: 20px;
+}
+
+.container p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #555;
+    text-align: justify;
+    margin-bottom: 20px;
+}
+
+/* Help Options Section */
+.help-options {
+    margin-top: 30px;
+}
+
+.help-options h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #d81b60;
+    margin-bottom: 15px;
+}
+
+.help-options ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.help-options ul li {
+    margin: 10px 0;
+}
+
+.help-options ul li a {
+    text-decoration: none;
+    color: #d81b60;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.help-options ul li a:hover {
+    color: #ad1457;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar .menu {
+        display: none; /* Hide menu in smaller screens */
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .container h2 {
+        font-size: 24px;
+    }
+
+    .container p {
+        font-size: 14px;
+    }
+
+    .help-options h3 {
+        font-size: 20px;
+    }
+
+    .help-options ul li {
+        font-size: 14px;
+    }
+}

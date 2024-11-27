@@ -1,0 +1,127 @@
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ffeeee, #f5d2d8);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+    display: flex;
+    gap: 10px;
+}
+
+.logo {
+    height: 50px;
+}
+
+.logo2 {
+    height: 50px;
+}
+
+.logo3 {
+    height: 100px;
+}
+
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+    color: #d81b60; /* Same as hover color */
+}
+
+/* Main content container styling */
+.container {
+    margin-top: 80px; /* Space for fixed navbar */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.container h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #d81b60;
+    margin-bottom: 20px;
+}
+
+/* FAQ Section */
+.faq-list {
+    text-align: left;
+    margin-top: 20px;
+}
+
+.faq-item {
+    background-color: #f9f9f9;
+    margin: 15px 0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item h3 {
+    font-size: 20px;
+    color: #d81b60;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.faq-item p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar .menu {
+        display: none; /* Hide menu in smaller screens */
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .container h2 {
+        font-size: 24px;
+    }
+
+    .faq-item h3 {
+        font-size: 18px;
+    }
+
+    .faq-item p {
+        font-size: 14px;
+    }
+}
