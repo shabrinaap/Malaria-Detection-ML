@@ -1,0 +1,29 @@
+# Use an official Python runtime as a parent image
+FROM python:3.11-slim
+
+# Set environment variables to avoid interactive prompts during package installations
+ENV DEBIAN_FRONTEND=noninteractive
+
+# Install system dependencies for OpenCV and other required libraries
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \         # OpenGL library needed by OpenCV
+    libglib2.0-0 \            # Required by OpenCV
+    libsm6 \                  # Required by OpenCV (for GUI functionality)
+    libxext6 \                # Required by OpenCV (for GUI functionality)
+    libxrender1 \             # Required by OpenCV (for GUI functionality)
+    && rm -rf /var/lib/apt/lists/*  # Clean up to reduce image size
+
+# Set the working directory in the container
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install dependencies from the requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Expose the port your application will run on
+EXPOSE 8080
+
+# Define the command to run your app using gunicorn (adjust if using a different app server)
+CMD ["gunicorn", "-b", "0.0.0.0:8080", "app:app"]
