@@ -1,5 +1,5 @@
 # Start from a Python Alpine image
-FROM python:3.11-alpine
+FROM python:3.10-alpine
 
 # Set environment variables (to prevent Python from writing .pyc files and set default encoding)
 ENV PYTHONUNBUFFERED 1
