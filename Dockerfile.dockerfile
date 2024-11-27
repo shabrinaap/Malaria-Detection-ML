@@ -1,5 +1,5 @@
-docker build -t malaria-detection-app .
 # syntax=docker/dockerfile:1.4
+
 # Use an alpine-based Python image for the build stage
 FROM --platform=$BUILDPLATFORM python:3.11-alpine AS builder
 
@@ -14,12 +14,12 @@ RUN apk add --no-cache \
     libffi-dev \
     && apk add --no-cache --virtual .build-deps gcc musl-dev
 
-# Install Python dependencies
+# Copy requirements.txt and install Python dependencies
 COPY requirements.txt /src
 RUN --mount=type=cache,target=/root/.cache/pip \
-    pip3 install -r requirements.txt
+    pip3 install --no-cache-dir -r requirements.txt
 
-# Copy application files into container
+# Copy the application code
 COPY . .
 
 # Final image build
