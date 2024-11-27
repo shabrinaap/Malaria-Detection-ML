@@ -49,4 +49,4 @@ ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_ENV=production
 
 # Run the application
-CMD ["python3", "appfix.py"]
+CMD ["gunicorn", "app:app"]
