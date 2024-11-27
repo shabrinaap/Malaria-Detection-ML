@@ -1,21 +1,29 @@
 FROM python:3.10-slim
-COPY ./requirements.txt ./requirements.txt
-RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
-WORKDIR /app
 
+
+
+# Install system dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     libgl1-mesa-glx \
     libglib2.0-0 \
-    && apt-get clean \
+    python3-dev \
+    gcc \
+    gfortran \
+    libatlas-base-dev \
+    liblapack-dev \
+    libblas-dev \
+    # libxcrypt-dev \
     && rm -rf /var/lib/apt/lists/*
-RUN python3 -m pip install --upgrade pip setuptools wheel
 
-COPY lib /app/lib
-COPY .env /app
-COPY models /app/models
-COPY main.py /app
+# Set up virtual environment and install Python dependencies
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-EXPOSE 80
+# Upgrade pip and setuptools to ensure precompiled wheels
+COPY . /app
+WORKDIR /app
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
 
-ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["python", "app.py"]
