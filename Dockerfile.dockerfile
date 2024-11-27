@@ -49,5 +49,5 @@ ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_ENV=production
 ENV PORT 8000  # Default port
 
-CMD ["gunicorn", "app:app", "--host", "0.0.0.0", "--port", "$PORT"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
 
