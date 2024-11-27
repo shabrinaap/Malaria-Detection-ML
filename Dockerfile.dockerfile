@@ -40,6 +40,9 @@ RUN apk add --no-cache \
 # Copy the installed Python environment and application files from the builder
 COPY --from=builder /src /src
 
+COPY . /app/.
+RUN  web: gunicorn app:app
+
 # Expose port 5000 (Flask default)
 EXPOSE 5000
 
@@ -49,5 +52,5 @@ ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_ENV=production
 ENV PORT 8000  # Default port
 
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["gunicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
 
