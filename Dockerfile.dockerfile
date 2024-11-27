@@ -1,28 +1,20 @@
-FROM python:3.10-slim
+FROM python:3.9-slim
+COPY ./requirements.txt ./requirements.txt
+RUN pip install --upgrade pip && pip install --no-cache-dir -r requirements.txt
+WORKDIR /app
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
-    python3-dev \
-    gcc \
-    gfortran \
-    libatlas-base-dev \
-    liblapack-dev \
-    libblas-dev \
-    libxcrypt-dev \
+    libgl1-mesa-glx \
+    libglib2.0-0 \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-# Set up virtual environment and install Python dependencies
-ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m venv $VIRTUAL_ENV
-ENV PATH="$VIRTUAL_ENV/bin:$PATH"
+COPY lib /app/lib
+COPY .env /app
+COPY models /app/models
+COPY main.py /app
 
-# Upgrade pip and setuptools to ensure precompiled wheels
-RUN pip install --upgrade pip setuptools wheel
+EXPOSE 80
 
-# Copy application files and install dependencies
-COPY . /app
-WORKDIR /app
-RUN pip install -r requirements.txt
-
-CMD ["python", "app.py"]
+ENTRYPOINT ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
