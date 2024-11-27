@@ -1,34 +1,28 @@
-# Start from a Python Alpine image
-FROM python:3.10-alpine
+FROM python:3.10-slim
 
-# Set environment variables (to prevent Python from writing .pyc files and set default encoding)
-ENV PYTHONUNBUFFERED 1
-ENV PYTHONDONTWRITEBYTECODE 1
-
-# Install system dependencies including OpenGL libraries
-RUN apk update && \
-    apk add --no-cache libgl mesa-gl
-
-# Set the working directory in the container
-WORKDIR /app
-
-# Copy the current directory contents into the container
-COPY . /app/
-
-# Install Python dependencies from requirements.txt
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     build-essential \
+    python3-dev \
     gcc \
     gfortran \
     libatlas-base-dev \
     liblapack-dev \
     libblas-dev \
-    python3-dev
+    libxcrypt-dev \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir -r requirements.txt
+# Set up virtual environment and install Python dependencies
+ENV VIRTUAL_ENV=/opt/venv
+RUN python3 -m venv $VIRTUAL_ENV
+ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-# Expose the port that the Flask app will run on
-EXPOSE 8080
+# Upgrade pip and setuptools to ensure precompiled wheels
+RUN pip install --upgrade pip setuptools wheel
 
-# Command to run the Flask app (replace with your entry point)
-CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:8080", "app:app"]
+# Copy application files and install dependencies
+COPY . /app
+WORKDIR /app
+RUN pip install -r requirements.txt
+
+CMD ["python", "app.py"]
