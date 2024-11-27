@@ -1,6 +1,6 @@
 # python_version=3.10
 
-numpy==2.0.2
+numpy
 onnx
 onnxruntime
 Flask==2.2.5
