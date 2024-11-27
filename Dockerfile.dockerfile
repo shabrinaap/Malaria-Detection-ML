@@ -1,7 +1,6 @@
-docker build -t malaria-detection-app .
 # syntax=docker/dockerfile:1.4
 # Use an alpine-based Python image for the build stage
-FROM --platform=$BUILDPLATFORM python:3.11-alpine AS builder
+FROM --platform=$BUILDPLATFORM python:3.10-alpine AS builder
 
 # Set working directory in container
 WORKDIR /src
@@ -40,9 +39,6 @@ RUN apk add --no-cache \
 # Copy the installed Python environment and application files from the builder
 COPY --from=builder /src /src
 
-COPY . /app/.
-RUN  web: gunicorn app:app
-
 # Expose port 5000 (Flask default)
 EXPOSE 5000
 
@@ -52,5 +48,5 @@ ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_ENV=production
 ENV PORT 8000  # Default port
 
+# Use CMD to start the Gunicorn server with your app
 CMD ["gunicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
-
