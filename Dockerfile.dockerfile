@@ -47,6 +47,7 @@ EXPOSE 5000
 ENV FLASK_APP=server.py
 ENV FLASK_RUN_HOST=0.0.0.0
 ENV FLASK_ENV=production
+ENV PORT 8000  # Default port
 
-# Run the application
-CMD ["gunicorn", "app:app"]
+CMD ["gunicorn", "app:app", "--host", "0.0.0.0", "--port", "$PORT"]
+
