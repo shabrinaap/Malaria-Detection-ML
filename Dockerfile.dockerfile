@@ -16,8 +16,15 @@ WORKDIR /app
 COPY . /app/
 
 # Install Python dependencies from requirements.txt
-RUN apt-get update && apt-get install -y python3-opencv
-RUN pip install opencv-python
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    gcc \
+    gfortran \
+    libatlas-base-dev \
+    liblapack-dev \
+    libblas-dev \
+    python3-dev
+
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the port that the Flask app will run on
