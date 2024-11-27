@@ -1,0 +1,11 @@
+[phases.setup]
+apt_packages = ["build-essential", "python3-dev", "gcc", "musl-dev"]
+nix_packages = ["python311"]
+
+[phases.build]
+cmds = [
+  "pip install -r requirements.txt"
+]
+
+[phases.start]
+cmd = "gunicorn appfix:app --bind 0.0.0.0:5000"
