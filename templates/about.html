@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <div class="logo-container">
+            <img src="{{ url_for('static', filename='images/ugm-logo.png') }}" alt="UGM Logo" class="logo">
+            <img src="{{ url_for('static', filename='images/plasmotec-logo.png') }}" alt="Plasmotec Logo" class="logo2">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}" class="active">Meet Our Team</a></li>
+                <li><a href="{{ url_for('faq') }}">FAQ</a></li>
+                <li><a href="{{ url_for('helpdesk') }}">Help Desk</a></li>
+                {% if session.get('user') %}
+                    <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% else %}
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('sign_up') }}">Sign Up</a></li>
+                {% endif %}        
+            </ul>
+            {% if session.get('user') %}
+                <span class="welcome-text">Welcome, {{ session.get('user') }}</span>
+            {% endif %}
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h2>About Us</h2>
+        <p>Welcome to our Malaria Detection Project. We are a team of dedicated professionals working to combat malaria through innovative technology. Our team leverages machine learning and image processing to provide accurate predictions and support medical professionals in diagnosing malaria.</p>
+
+        <!-- Team Members Section -->
+        <h3>Meet Our Team</h3>
+        <div class="team-members">
+            <!-- Team Member 1 -->
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/team1.png') }}" alt="Team Member 1" class="member1">
+                <div class="team-info">
+                    <h4>Anisa Nur Rahmalina</h4>
+                    <p>NIM: 21/473844/TK/52242</p>
+                    <p>Email: <a href="mailto:anisa.nur.rahmalina@mail.ugm.ac.id">anisa.nur.rahmalina@mail.ugm.ac.id</a></p>
+                    <p>Role: Project Lead and Backend Engineer</p>
+                    <p><i class="fas fa-acquisitions-incorporated    "></i> is responsible for overseeing the project's overall direction and ensuring its success.</p>
+                </div>
+            </div>
+            <!-- Team Member 2 -->
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/team2.png') }}" alt="Team Member 2" class="member2">
+                <div class="team-info">
+                    <h4>Shabrina Azadirach Putri</h4>
+                    <p>NIM: 21/475258/TK/52455</p>
+                    <p>Email: <a href="mailto:shabrina.azadirach.putri@mail.ugm.ac.id">shabrina.azadirach.putri@mail.ugm.ac.id</a></p>
+                    <p>Role: Machine Learning Engineer</p>
+                    <p>Shabrina specializes in developing machine learning models for malaria detection and optimization.</p>
+                </div>
+            </div>
+            <!-- Team Member 3 -->
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/team3.png') }}" alt="Team Member 3" class="member3">
+                <div class="team-info">
+                    <h4>Alfons Patrick Mulyosantoso</h4>
+                    <p>NIM: 21/473313/TK/52155</p>
+                    <p>Email: <a href="mailto:alfons.patrick.mulyosantoso@mail.ugm.ac.id">alfons.patrick.mulyosantoso@mail.ugm.ac.id</a></p>
+                    <p>Role: Data Scientist</p>
+                    <p>Alfons analyzes and processes data to improve the accuracy of our malaria detection models.</p>
+                </div>
+            </div>
+            <!-- Team Member 4 -->
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/team4.png') }}" alt="Team Member 4" class="member4">
+                <div class="team-info">
+                    <h4>Ailsa Callista Beatrice</h4>
+                    <p>NIM: 21/474244/TK/52310</p>
+                    <p>Email: <a href="mailto:ailsa.callista.beatrice@mail.ugm.ac.id">ailsa.callista.beatrice@mail.ugm.ac.id</a></p>
+                    <p>Role: Backend Engineer</p>
+                    <p>Ailsa is in charge of integrates machine learning models with the application backend to ensure seamless functionality and scalability.</p>
+                </div>
+            </div>
+            <!-- Team Member 5 -->
+            <div class="team-member">
+                <img src="{{ url_for('static', filename='images/team5.png') }}" alt="Team Member 5" class="member5">
+                <div class="team-info">
+                    <h4>Afra Majida Hariono</h4>
+                    <p>NIM: 21/482810/TK/53377</p>
+                    <p>Email: <a href="mailto:afra.majida0202@mail.ugm.ac.id">afra.majida0202@mail.ugm.ac.id</a></p>
+                    <p>Role: Frontend Engineer </p>
+                    <p>Afra is in charge of designing and implementing user-friendly interfaces access.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
