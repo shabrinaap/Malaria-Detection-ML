@@ -212,7 +212,13 @@
         method: "POST",
         body: formData
     })
-    .then(response => response.json())
+    .then(response => {
+    if (response.ok) {
+        return response.json();  // Parse JSON only if the response is OK
+    } else {
+        throw new Error("Server returned an error response");
+    }
+})
     .then(data => {
         document.getElementById('loading-animation').style.display = 'none';
 
