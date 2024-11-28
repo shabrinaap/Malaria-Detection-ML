@@ -38,7 +38,7 @@ if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 
 # Load ONNX model
-model_path = os.path.join(os.getcwd(), "malaria_classification_model.onnx")
+model_path = os.path.join(os.getcwd(), "malaria_classification_model2.onnx")
 try:
     session = ort.InferenceSession(model_path)
     LOG.info("Model loaded successfully.")
